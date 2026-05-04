@@ -1,121 +1,97 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { XCircle, CheckCircle2, Search, Zap, Network, BrainCircuit, LineChart, LayoutDashboard } from "lucide-react";
+import { CheckCircle2, AlertCircle } from "lucide-react";
 
 export default function ProblemSolution() {
   const items = [
     {
       problem: "Manual discovery and vetting takes weeks of team bandwidth.",
-      solution: "AI-powered matching engine surfaces perfect creators instantly.",
-      problemIcon: <Search className="w-6 h-6 text-red-500" />,
-      solutionIcon: <Zap className="w-6 h-6 text-brand-cyan" />,
-      visual: <BrainCircuit className="w-24 h-24 text-gray-200 stroke-[1]" />
+      solution: "AI-powered matching engine surfaces perfect creators instantly."
     },
     {
       problem: "Decisions based on gut-feel lead to unpredictable campaign results.",
-      solution: "Deep analytics and scoring predict performance before you spend.",
-      problemIcon: <XCircle className="w-6 h-6 text-red-500" />,
-      solutionIcon: <LineChart className="w-6 h-6 text-brand-cyan" />,
-      visual: <LineChart className="w-24 h-24 text-gray-200 stroke-[1]" />,
-      reverse: true
+      solution: "Deep analytics and scoring predict performance before you spend."
     },
     {
       problem: "Scattered workflows across spreadsheets, emails, and DMs.",
-      solution: "Unified collaboration hub brings your entire team and creators together.",
-      problemIcon: <Network className="w-6 h-6 text-red-500" />,
-      solutionIcon: <LayoutDashboard className="w-6 h-6 text-brand-cyan" />,
-      visual: <LayoutDashboard className="w-24 h-24 text-gray-200 stroke-[1]" />
+      solution: "Unified collaboration hub brings your entire team and creators together."
     }
   ];
 
   return (
-    <section className="py-24 bg-bg-secondary overflow-hidden relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-20">
-          <h2 className="text-3xl md:text-5xl font-display font-bold text-text-primary tracking-tight">
+    <section className="py-24 bg-[#FFFFFF] overflow-hidden relative">
+      <div className="max-w-[1200px] mx-auto px-6 relative z-10">
+        
+        <div className="text-center mb-16">
+          <p className="text-[12px] font-semibold text-[#9B3DB8] uppercase tracking-[0.12em] mb-4">
+            The Challenge
+          </p>
+          <h2 className="text-[42px] font-bold text-[#2B2E3B] tracking-tight">
             Why Traditional Influencer <br className="hidden md:block" />
-            Marketing <span className="text-kh-crimson">Fails</span>
+            Marketing Fails
           </h2>
         </div>
 
-        <div className="space-y-24">
-          {items.map((item, index) => (
-            <div 
-              key={index} 
-              className={`flex flex-col md:flex-row items-center gap-12 lg:gap-24 p-8 md:p-12 rounded-3xl ${index % 2 === 0 ? 'bg-white shadow-card' : 'bg-bg-tertiary shadow-sm'} ${item.reverse ? 'md:flex-row-reverse' : ''}`}
-            >
-              <motion.div 
-                initial={{ opacity: 0, x: item.reverse ? 50 : -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6 }}
-                className="flex-1 space-y-8"
+        <div className="relative">
+          {/* Center Vertical Divider (Desktop only) */}
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[1px] -translate-x-1/2 border-l border-dashed border-[#EAE0F5] z-0"></div>
+
+          <div className="space-y-12 relative z-10">
+            {items.map((item, index) => (
+              <div 
+                key={index} 
+                className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-24 relative"
               >
-                <div className="p-6 bg-white rounded-2xl border border-border-light shadow-sm relative overflow-hidden group">
-                  <div className="absolute top-0 left-0 w-1 h-full bg-kh-warm"></div>
-                  <div className="flex gap-4 items-start">
-                    <div className="mt-1 bg-red-50 p-2 rounded-lg text-kh-crimson [&>svg]:text-current">{item.problemIcon}</div>
-                    <div>
-                      <h4 className="text-sm font-semibold text-kh-crimson uppercase tracking-wider mb-2">The Problem</h4>
-                      <p className="text-lg text-text-primary font-medium">{item.problem}</p>
-                    </div>
-                  </div>
+                {/* VS Badge (Desktop only) */}
+                <div className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-[#EAE0F5] rounded-full items-center justify-center shadow-sm z-20">
+                  <span className="text-[#9B3DB8] font-bold text-[14px]">VS</span>
                 </div>
 
-                <div className="p-6 bg-white rounded-2xl border border-border-medium shadow-earth-sm relative overflow-hidden hover:shadow-md transition-shadow duration-300">
-                  <div className="absolute top-0 left-0 w-1 h-full bg-kh-earth"></div>
-                  <div className="flex gap-4 items-start">
-                    <div className="mt-1 bg-bg-secondary p-2 rounded-lg border border-border-light text-kh-forest [&>svg]:text-current">{item.solutionIcon}</div>
+                {/* Problem Card (Left) */}
+                <motion.div 
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="bg-[#FFF5F5] border border-[rgba(229,57,53,0.25)] rounded-xl p-6 md:p-8 relative overflow-hidden"
+                >
+                  <div className="absolute top-0 left-0 bottom-0 w-1 bg-gradient-bundle-2"></div>
+                  <div className="flex items-start gap-4">
+                    <div className="mt-1 flex-shrink-0">
+                      <AlertCircle className="w-5 h-5 text-[#E53935]" />
+                    </div>
                     <div>
-                      <h4 className="text-sm font-semibold text-kh-forest uppercase tracking-wider mb-2">The Solution</h4>
-                      <p className="text-lg text-text-primary font-semibold">{item.solution}</p>
+                      <h4 className="text-[14px] font-semibold text-gradient-bundle-2 uppercase tracking-wide mb-2">The Problem</h4>
+                      <p className="text-[#4A4E5C] text-[16px] leading-relaxed font-medium">{item.problem}</p>
                     </div>
                   </div>
-                </div>
-              </motion.div>
+                </motion.div>
 
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6 }}
-                className="flex-1 w-full relative flex justify-center items-center"
-              >
-                <div className="w-64 h-64 md:w-80 md:h-80 bg-white rounded-full flex items-center justify-center shadow-earth-sm border border-border-light relative">
-                  {/* Decorative dashed rings */}
-                  <div className="absolute inset-4 border border-dashed border-border-medium rounded-full animate-[spin_30s_linear_infinite]"></div>
-                  <div className="absolute inset-10 border border-dashed border-border-light rounded-full animate-[spin_20s_linear_infinite_reverse]"></div>
-                  
-                  <div className="relative z-10 group-hover:scale-110 transition-transform duration-500 text-kh-forest [&>svg]:text-current">
-                    {item.visual}
+                {/* Solution Card (Right) */}
+                <motion.div 
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, delay: index * 0.1 + 0.2 }}
+                  className="bg-[#F1FFF5] border border-[rgba(46,125,50,0.25)] rounded-xl p-6 md:p-8 relative overflow-hidden"
+                >
+                  <div className="absolute top-0 left-0 bottom-0 w-1 bg-gradient-bundle-3"></div>
+                  <div className="flex items-start gap-4">
+                    <div className="mt-1 flex-shrink-0">
+                      <CheckCircle2 className="w-5 h-5 text-[#2E7D32]" />
+                    </div>
+                    <div>
+                      <h4 className="text-[14px] font-semibold text-gradient-bundle-3 uppercase tracking-wide mb-2">The Solution</h4>
+                      <p className="text-[#2B2E3B] text-[16px] leading-relaxed font-semibold">{item.solution}</p>
+                    </div>
                   </div>
-                  
-                  {/* Nodes on circle */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-kh-purple rounded-full border-2 border-white shadow-sm"></div>
-                  <div className="absolute bottom-1/4 right-0 translate-x-1/2 translate-y-1/2 w-4 h-4 bg-kh-cyan rounded-full border-2 border-white shadow-sm"></div>
-                  <div className="absolute bottom-1/4 left-0 -translate-x-1/2 translate-y-1/2 w-4 h-4 bg-kh-orange rounded-full border-2 border-white shadow-sm"></div>
-                </div>
-              </motion.div>
-            </div>
-          ))}
+                </motion.div>
+
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-      
-      {/* Background SVG Cable Divider */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2 hidden lg:block opacity-30">
-        <svg height="100%" width="100%">
-          <line x1="0" y1="0" x2="0" y2="100%" stroke="url(#lineGradientFull)" strokeWidth="4" strokeDasharray="8 8" />
-          <defs>
-            <linearGradient id="lineGradientFull" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#8B2FC9" />
-              <stop offset="25%" stopColor="#29B6F6" />
-              <stop offset="50%" stopColor="#F47C20" />
-              <stop offset="75%" stopColor="#F5C518" />
-              <stop offset="100%" stopColor="#3A8C3F" />
-            </linearGradient>
-          </defs>
-        </svg>
       </div>
     </section>
   );

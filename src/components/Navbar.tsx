@@ -5,10 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
-// Brand colors extracted from Kreator Hive LLP logo
-// Primary: deep charcoal #2B2E3B, Accent gradient: purple #9B3DB8 → cyan #29B6F6
-// Secondary accent: yellow #F9A825 → green #2E7D32
-
 const NAV_LINKS = [
   { name: "Platform", href: "#" },
   { name: "Solutions", href: "#" },
@@ -38,38 +34,31 @@ export default function Navbar() {
         right: 0,
         zIndex: 50,
         transition: "all 0.3s ease",
-        backgroundColor: isScrolled ? "rgba(255,255,255,0.88)" : "#ffffff",
-        backdropFilter: isScrolled ? "blur(12px)" : "none",
-        borderBottom: isScrolled
-          ? "1px solid rgba(43,46,59,0.1)"
-          : "1px solid transparent",
-        boxShadow: isScrolled ? "0 1px 12px rgba(43,46,59,0.08)" : "none",
-        padding: isScrolled ? "6px 0" : "8px 0",
+        backgroundColor: isScrolled ? "#FFFFFF" : "transparent",
+        boxShadow: isScrolled ? "0 1px 0 #EAE0F5" : "none",
+        height: "68px",
+        display: "flex",
+        alignItems: "center",
       }}
     >
-      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
+      <div style={{ width: "100%", maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
 
-          {/* Logo — full SVG (icon + "KREATOR HIVE LLP" text) */}
           <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
             <Image
               src="/logo.svg"
-              alt="Kreator Hive LLP"
-              width={520}
-              height={200}
+              alt="Kreator Hive"
+              width={156}
+              height={60}
               style={{
                 objectFit: "contain",
-                transition: "transform 0.3s ease",
                 width: "156px",
                 height: "60px",
               }}
-              onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.04)")}
-              onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
               unoptimized
             />
           </Link>
 
-          {/* Desktop Nav */}
           <div style={{ display: "flex", alignItems: "center", gap: "32px" }} className="desktop-nav">
             {NAV_LINKS.map((link) => (
               <NavLink key={link.name} href={link.href} name={link.name} />
@@ -77,7 +66,6 @@ export default function Navbar() {
             <DemoButton />
           </div>
 
-          {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             style={{
@@ -95,17 +83,16 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Nav */}
       {isMobileMenuOpen && (
         <div
           style={{
             position: "absolute",
-            top: "100%",
+            top: "68px",
             left: 0,
             right: 0,
-            backgroundColor: "#ffffff",
-            borderBottom: "1px solid rgba(43,46,59,0.1)",
-            boxShadow: "0 8px 24px rgba(43,46,59,0.12)",
+            backgroundColor: "#FFFFFF",
+            borderBottom: "1px solid #EAE0F5",
+            boxShadow: "0 8px 24px rgba(155, 61, 184, 0.08)",
             padding: "16px",
             display: "flex",
             flexDirection: "column",
@@ -119,19 +106,21 @@ export default function Navbar() {
               onClick={() => setIsMobileMenuOpen(false)}
               style={{
                 textDecoration: "none",
-                color: "#2B2E3B",
+                color: "#4A4E5C",
                 fontWeight: 500,
                 fontSize: "15px",
                 padding: "10px 16px",
                 borderRadius: "8px",
-                transition: "background 0.2s",
+                transition: "background 0.2s, color 0.2s",
               }}
-              onMouseEnter={e =>
-                (e.currentTarget.style.background = "rgba(155,61,184,0.06)")
-              }
-              onMouseLeave={e =>
-                (e.currentTarget.style.background = "transparent")
-              }
+              onMouseEnter={e => {
+                e.currentTarget.style.background = "#FAF7FF";
+                e.currentTarget.style.color = "#9B3DB8";
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = "transparent";
+                e.currentTarget.style.color = "#4A4E5C";
+              }}
             >
               {link.name}
             </Link>
@@ -142,7 +131,6 @@ export default function Navbar() {
         </div>
       )}
 
-      {/* Responsive styles */}
       <style>{`
         @media (max-width: 768px) {
           .desktop-nav { display: none !important; }
@@ -163,24 +151,22 @@ function NavLink({ href, name }: { href: string; name: string }) {
       style={{
         position: "relative",
         textDecoration: "none",
-        fontSize: "14px",
+        fontSize: "15px",
         fontWeight: 500,
-        color: hovered ? "#9B3DB8" : "#2B2E3B",
+        color: hovered ? "#9B3DB8" : "#4A4E5C",
         transition: "color 0.2s",
       }}
     >
       {name}
-      {/* Underline: purple → cyan gradient matching logo accent */}
       <span
         style={{
           position: "absolute",
-          bottom: "-3px",
+          bottom: "-4px",
           left: 0,
           height: "2px",
           width: hovered ? "100%" : "0%",
-          background: "linear-gradient(90deg, #9B3DB8, #29B6F6)",
-          borderRadius: "1px",
-          transition: "width 0.3s ease",
+          background: "#9B3DB8",
+          transition: "width 0.2s ease",
         }}
       />
     </Link>
@@ -196,25 +182,21 @@ function DemoButton({ fullWidth = false }: { fullWidth?: boolean }) {
       style={{
         width: fullWidth ? "100%" : "auto",
         padding: "10px 22px",
-        borderRadius: "999px",
+        borderRadius: "8px",
         border: "none",
         cursor: "pointer",
-        fontSize: "14px",
+        fontSize: "15px",
         fontWeight: 600,
         color: "#ffffff",
-        letterSpacing: "0.2px",
-        // Gradient pulled directly from logo's purple-to-cyan cable bundle
-        background: hovered
-          ? "linear-gradient(135deg, #7B2D9E 0%, #0288D1 100%)"
-          : "linear-gradient(135deg, #9B3DB8 0%, #29B6F6 100%)",
+        background: "linear-gradient(135deg, #9B3DB8 0%, #E53935 33%, #FF8F00 66%, #2E7D32 100%)",
         boxShadow: hovered
-          ? "0 4px 20px rgba(155,61,184,0.4)"
-          : "0 2px 10px rgba(155,61,184,0.25)",
-        transition: "all 0.25s ease",
-        transform: hovered ? "translateY(-1px)" : "translateY(0)",
+          ? "0 4px 14px rgba(155,61,184,0.30)"
+          : "none",
+        transition: "all 0.2s ease",
+        transform: hovered ? "scale(1.02)" : "scale(1)",
       }}
     >
       Request a Demo
     </button>
   );
-}
+}
