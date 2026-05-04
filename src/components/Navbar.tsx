@@ -1,0 +1,107 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+const NAV_LINKS = [
+  { name: "Platform", href: "#" },
+  { name: "Solutions", href: "#" },
+  { name: "Why Us", href: "#" },
+  { name: "Case Studies", href: "#" },
+  { name: "Blog", href: "#" },
+];
+
+export default function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <nav
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        isScrolled
+          ? "bg-white/80 backdrop-blur-md shadow-sm py-4 border-b border-gray-200"
+          : "bg-transparent py-6"
+      )}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2 group">
+            <div className="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center">
+              <div className="w-4 h-4 border-2 border-white rounded-sm rotate-45 group-hover:rotate-90 transition-transform duration-500" />
+            </div>
+            <span
+              className={cn(
+                "font-display font-bold text-xl tracking-tight transition-colors",
+                isScrolled ? "text-neutral-900" : "text-white"
+              )}
+            >
+              KreatorHive
+            </span>
+          </Link>
+
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center space-x-8">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={cn(
+                  "text-sm font-medium transition-colors hover:text-brand-cyan",
+                  isScrolled ? "text-gray-600" : "text-gray-200"
+                )}
+              >
+                {link.name}
+              </Link>
+            ))}
+            <button className="bg-gradient-primary text-white px-6 py-2.5 rounded-full font-medium text-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+              Request a Demo
+            </button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? (
+              <X className={cn("w-6 h-6", isScrolled ? "text-gray-900" : "text-white")} />
+            ) : (
+              <Menu className={cn("w-6 h-6", isScrolled ? "text-gray-900" : "text-white")} />
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Nav */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-200 shadow-lg py-4 px-4 flex flex-col space-y-4">
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className="text-gray-800 font-medium px-4 py-2 hover:bg-gray-50 rounded-lg"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {link.name}
+            </Link>
+          ))}
+          <button className="w-full bg-gradient-primary text-white px-6 py-3 rounded-full font-medium mt-4">
+            Request a Demo
+          </button>
+        </div>
+      )}
+    </nav>
+  );
+}
