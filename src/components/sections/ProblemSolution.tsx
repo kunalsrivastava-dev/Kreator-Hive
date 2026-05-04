@@ -35,7 +35,7 @@ export default function ProblemSolution() {
         <div className="text-center mb-20">
           <h2 className="text-3xl md:text-5xl font-display font-bold text-text-primary tracking-tight">
             Why Traditional Influencer <br className="hidden md:block" />
-            Marketing <span className="text-brand-red">Fails</span>
+            Marketing <span className="text-kh-crimson">Fails</span>
           </h2>
         </div>
 
@@ -53,22 +53,22 @@ export default function ProblemSolution() {
                 className="flex-1 space-y-8"
               >
                 <div className="p-6 bg-white rounded-2xl border border-border-light shadow-sm relative overflow-hidden group">
-                  <div className="absolute top-0 left-0 w-1 h-full bg-brand-red"></div>
+                  <div className="absolute top-0 left-0 w-1 h-full bg-kh-warm"></div>
                   <div className="flex gap-4 items-start">
-                    <div className="mt-1 bg-red-50 p-2 rounded-lg">{item.problemIcon}</div>
+                    <div className="mt-1 bg-red-50 p-2 rounded-lg text-kh-crimson [&>svg]:text-current">{item.problemIcon}</div>
                     <div>
-                      <h4 className="text-sm font-semibold text-brand-red uppercase tracking-wider mb-2">The Problem</h4>
+                      <h4 className="text-sm font-semibold text-kh-crimson uppercase tracking-wider mb-2">The Problem</h4>
                       <p className="text-lg text-text-primary font-medium">{item.problem}</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="p-6 bg-white rounded-2xl border border-border-medium shadow-brand-sm relative overflow-hidden hover:shadow-brand-md transition-shadow duration-300">
-                  <div className="absolute top-0 left-0 w-1 h-full bg-gradient-cool"></div>
+                <div className="p-6 bg-white rounded-2xl border border-border-medium shadow-earth-sm relative overflow-hidden hover:shadow-md transition-shadow duration-300">
+                  <div className="absolute top-0 left-0 w-1 h-full bg-kh-earth"></div>
                   <div className="flex gap-4 items-start">
-                    <div className="mt-1 bg-bg-secondary p-2 rounded-lg border border-border-light">{item.solutionIcon}</div>
+                    <div className="mt-1 bg-bg-secondary p-2 rounded-lg border border-border-light text-kh-forest [&>svg]:text-current">{item.solutionIcon}</div>
                     <div>
-                      <h4 className="text-sm font-semibold text-brand-purple uppercase tracking-wider mb-2">The Solution</h4>
+                      <h4 className="text-sm font-semibold text-kh-forest uppercase tracking-wider mb-2">The Solution</h4>
                       <p className="text-lg text-text-primary font-semibold">{item.solution}</p>
                     </div>
                   </div>
@@ -82,19 +82,19 @@ export default function ProblemSolution() {
                 transition={{ duration: 0.6 }}
                 className="flex-1 w-full relative flex justify-center items-center"
               >
-                <div className="w-64 h-64 md:w-80 md:h-80 bg-white rounded-full flex items-center justify-center shadow-brand-sm border border-border-light relative">
+                <div className="w-64 h-64 md:w-80 md:h-80 bg-white rounded-full flex items-center justify-center shadow-earth-sm border border-border-light relative">
                   {/* Decorative dashed rings */}
                   <div className="absolute inset-4 border border-dashed border-border-medium rounded-full animate-[spin_30s_linear_infinite]"></div>
                   <div className="absolute inset-10 border border-dashed border-border-light rounded-full animate-[spin_20s_linear_infinite_reverse]"></div>
                   
-                  <div className="relative z-10 group-hover:scale-110 transition-transform duration-500">
+                  <div className="relative z-10 group-hover:scale-110 transition-transform duration-500 text-kh-forest [&>svg]:text-current">
                     {item.visual}
                   </div>
                   
                   {/* Nodes on circle */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-brand-purple rounded-full border-2 border-white shadow-sm"></div>
-                  <div className="absolute bottom-1/4 right-0 translate-x-1/2 translate-y-1/2 w-4 h-4 bg-brand-cyan rounded-full border-2 border-white shadow-sm"></div>
-                  <div className="absolute bottom-1/4 left-0 -translate-x-1/2 translate-y-1/2 w-4 h-4 bg-brand-orange rounded-full border-2 border-white shadow-sm"></div>
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-kh-purple rounded-full border-2 border-white shadow-sm"></div>
+                  <div className="absolute bottom-1/4 right-0 translate-x-1/2 translate-y-1/2 w-4 h-4 bg-kh-cyan rounded-full border-2 border-white shadow-sm"></div>
+                  <div className="absolute bottom-1/4 left-0 -translate-x-1/2 translate-y-1/2 w-4 h-4 bg-kh-orange rounded-full border-2 border-white shadow-sm"></div>
                 </div>
               </motion.div>
             </div>
@@ -105,11 +105,14 @@ export default function ProblemSolution() {
       {/* Background SVG Cable Divider */}
       <div className="absolute left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2 hidden lg:block opacity-30">
         <svg height="100%" width="100%">
-          <line x1="0" y1="0" x2="0" y2="100%" stroke="url(#lineGradientCool)" strokeWidth="4" strokeDasharray="8 8" />
+          <line x1="0" y1="0" x2="0" y2="100%" stroke="url(#lineGradientFull)" strokeWidth="4" strokeDasharray="8 8" />
           <defs>
-            <linearGradient id="lineGradientCool" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#8B35C4" />
-              <stop offset="100%" stopColor="#29B6F6" />
+            <linearGradient id="lineGradientFull" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#8B2FC9" />
+              <stop offset="25%" stopColor="#29B6F6" />
+              <stop offset="50%" stopColor="#F47C20" />
+              <stop offset="75%" stopColor="#F5C518" />
+              <stop offset="100%" stopColor="#3A8C3F" />
             </linearGradient>
           </defs>
         </svg>

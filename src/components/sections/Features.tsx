@@ -49,8 +49,9 @@ export default function Features() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => {
-            const gradientClass = index < 2 ? "bg-gradient-cool" : index < 4 ? "bg-gradient-warm" : "bg-gradient-earth";
-            const textGradientClass = index < 2 ? "text-brand-purple" : index < 4 ? "text-brand-red" : "text-brand-green";
+            const gradientBgClass = index < 2 ? "bg-kh-cool" : index < 4 ? "bg-kh-warm" : "bg-kh-earth";
+            const borderClass = index < 2 ? "card-border-cool" : index < 4 ? "card-border-warm" : "card-border-earth";
+            const textColorClass = index < 2 ? "text-kh-purple" : index < 4 ? "text-kh-crimson" : "text-kh-forest";
             
             return (
               <motion.div
@@ -59,15 +60,12 @@ export default function Features() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white p-8 rounded-2xl border border-border-light shadow-card relative group hover:-translate-y-2 hover:shadow-brand-md transition-all duration-300 overflow-hidden"
+                className={`bg-white p-8 rounded-2xl border border-border-light shadow-card relative group hover:-translate-y-2 hover:shadow-cool-md transition-all duration-300 overflow-hidden ${borderClass}`}
               >
-                {/* Top gradient border */}
-                <div className={`absolute top-0 left-0 w-full h-[3px] ${gradientClass}`}></div>
-
                 <div className="relative z-10">
                   <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 relative`}>
-                    <div className={`absolute inset-0 ${gradientClass} opacity-10 rounded-xl`}></div>
-                    <div className={`${textGradientClass} relative z-10`}>
+                    <div className={`absolute inset-0 ${gradientBgClass} opacity-10 rounded-xl`}></div>
+                    <div className={`${textColorClass} relative z-10 [&>svg]:text-current`}>
                       {feature.icon}
                     </div>
                   </div>

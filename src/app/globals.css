@@ -1,27 +1,43 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-brand-purple: #8B35C4;
-  --color-brand-blue: #4F6FE8;
-  --color-brand-cyan: #29B6F6;
-  --color-brand-red: #D32F2F;
-  --color-brand-orange: #F57C00;
-  --color-brand-yellow: #F9A825;
-  --color-brand-green: #388E3C;
-  --color-brand-dark: #2D3142;
+  --color-kh-purple: #8B2FC9;
+  --color-kh-periwinkle: #5B8EE6;
+  --color-kh-cyan: #29B6F6;
 
-  --color-bg-primary: #FFFFFF;
-  --color-bg-secondary: #F8F9FF;
-  --color-bg-tertiary: #F0FDF4;
-  --color-bg-accent: #FFF8F0;
+  --color-kh-crimson: #CC2222;
+  --color-kh-redorange: #E8551A;
+  --color-kh-orange: #F47C20;
 
-  --color-text-primary: #2D3142;
-  --color-text-secondary: #4A5568;
-  --color-text-muted: #718096;
-  --color-text-on-dark: #FFFFFF;
+  --color-kh-amber: #F5C518;
+  --color-kh-lime: #8DB832;
+  --color-kh-forest: #3A8C3F;
 
-  --color-border-light: #E8EAF6;
-  --color-border-medium: #C5CAE9;
+  --color-kh-dark: #2D3142;
+  --color-kh-body: #4A5568;
+  --color-kh-muted: #718096;
+  --color-kh-border: #E8EAF6;
+  --color-kh-surface: #F8F9FF;
+
+  /* Custom animations and utilities */
+  --animate-gradient: gradient 4s linear infinite;
+
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+  }
+
+  /* Core UI Variables */
+
+  --background-image-kh-cool: linear-gradient(135deg, var(--color-kh-purple), var(--color-kh-periwinkle), var(--color-kh-cyan));
+  --background-image-kh-warm: linear-gradient(135deg, var(--color-kh-crimson), var(--color-kh-redorange), var(--color-kh-orange));
+  --background-image-kh-earth: linear-gradient(135deg, var(--color-kh-amber), var(--color-kh-lime), var(--color-kh-forest));
+  --background-image-kh-full: linear-gradient(135deg, var(--color-kh-purple), var(--color-kh-cyan), var(--color-kh-orange), var(--color-kh-amber), var(--color-kh-forest));
+
+  --shadow-cool-sm: 0 4px 16px rgba(139, 47, 201, 0.12);
+  --shadow-cool-md: 0 8px 32px rgba(139, 47, 201, 0.18);
+  --shadow-warm-sm: 0 4px 16px rgba(204, 34, 34, 0.12);
+  --shadow-earth-sm: 0 4px 16px rgba(58, 140, 63, 0.12);
 
   --font-sans: var(--font-inter);
   --font-display: var(--font-plus-jakarta-sans);
@@ -47,75 +63,64 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Gradients */
-.bg-gradient-cool {
-  background-image: linear-gradient(135deg, #8B35C4, #29B6F6);
-}
+/* Base Utility Overrides for earlier generic classes if any still exist, but custom below preferred */
 
-.bg-gradient-warm {
-  background-image: linear-gradient(135deg, #D32F2F, #F57C00);
-}
-
-.bg-gradient-earth {
-  background-image: linear-gradient(135deg, #F9A825, #388E3C);
-}
-
-.bg-gradient-full {
-  background-image: linear-gradient(135deg, #8B35C4, #4F6FE8, #29B6F6, #F9A825, #388E3C);
-}
-
-.bg-gradient-hero {
-  background-image: linear-gradient(135deg, #8B35C4 0%, #4F6FE8 50%, #29B6F6 100%);
-}
-
-.bg-gradient-pastel {
-  background-image: linear-gradient(135deg, #EDE7F6 0%, #E3F2FD 50%, #E8F5E9 100%);
-}
-
-.bg-gradient-soft {
-  background-image: linear-gradient(135deg, #F8F9FF 0%, #EDE7F6 100%);
-}
-
-/* Gradient Text Utilities */
 .text-gradient-cool {
-  background-image: linear-gradient(135deg, #8B35C4, #29B6F6);
+  background: linear-gradient(135deg, #8B2FC9, #5B8EE6, #29B6F6);
   -webkit-background-clip: text;
-  color: transparent;
+  -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-warm {
-  background-image: linear-gradient(135deg, #D32F2F, #F57C00);
+  background: linear-gradient(135deg, #CC2222, #E8551A, #F47C20);
   -webkit-background-clip: text;
-  color: transparent;
+  -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-earth {
-  background-image: linear-gradient(135deg, #F9A825, #388E3C);
+  background: linear-gradient(135deg, #F5C518, #8DB832, #3A8C3F);
   -webkit-background-clip: text;
-  color: transparent;
+  -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-full {
-  background-image: linear-gradient(135deg, #8B35C4, #4F6FE8, #29B6F6, #F9A825, #388E3C);
+  background: linear-gradient(135deg, #8B2FC9, #29B6F6, #F47C20, #F5C518, #3A8C3F);
   -webkit-background-clip: text;
-  color: transparent;
+  -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Shadows */
-.shadow-brand-sm {
-  box-shadow: 0 4px 16px rgba(139, 53, 196, 0.10);
+.bg-kh-cool { background-image: linear-gradient(135deg, #8B2FC9, #5B8EE6, #29B6F6); }
+.bg-kh-warm { background-image: linear-gradient(135deg, #CC2222, #E8551A, #F47C20); }
+.bg-kh-earth { background-image: linear-gradient(135deg, #F5C518, #8DB832, #3A8C3F); }
+.bg-kh-full { background-image: linear-gradient(135deg, #8B2FC9, #29B6F6, #F47C20, #F5C518, #3A8C3F); }
+
+.btn-gradient-cool {
+  background: linear-gradient(135deg, #8B2FC9, #29B6F6);
+  color: white;
+  border: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-gradient-cool:hover {
+  opacity: 0.90;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(139, 47, 201, 0.30);
 }
 
-.shadow-brand-md {
-  box-shadow: 0 8px 32px rgba(139, 53, 196, 0.15);
+.card-border-cool {
+  border-top: 3px solid;
+  border-image: linear-gradient(90deg, #8B2FC9, #29B6F6) 1;
 }
-
-.shadow-brand-lg {
-  box-shadow: 0 16px 48px rgba(139, 53, 196, 0.20);
+.card-border-warm {
+  border-top: 3px solid;
+  border-image: linear-gradient(90deg, #CC2222, #F47C20) 1;
+}
+.card-border-earth {
+  border-top: 3px solid;
+  border-image: linear-gradient(90deg, #F5C518, #3A8C3F) 1;
 }
 
 .shadow-card {

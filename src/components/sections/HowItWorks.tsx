@@ -30,7 +30,7 @@ export default function HowItWorks() {
 
         <div className="relative">
           {/* Connecting Line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-full md:-translate-x-1/2 rounded-full opacity-30 border-dashed"></div>
+          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[2px] bg-kh-full md:-translate-x-1/2 rounded-full opacity-30 border-dashed"></div>
 
           <div className="space-y-12">
             {steps.map((step, index) => (
@@ -43,14 +43,14 @@ export default function HowItWorks() {
                 <div className={`flex-1 w-full pl-20 md:pl-0 ${index % 2 === 0 ? 'md:text-left' : 'md:text-right'}`}>
                   <div className={`relative bg-bg-secondary p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 ${index % 2 === 0 ? 'md:ml-auto md:mr-0 text-left' : 'md:mr-auto md:ml-0 text-right'}`}>
                     {/* Gradient left border effect */}
-                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-cool rounded-l-xl"></div>
+                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-kh-cool rounded-l-xl"></div>
                     <h3 className="text-2xl font-bold text-text-primary mb-3">{step.title}</h3>
                     <p className="text-text-secondary text-lg">{step.desc}</p>
                   </div>
                 </div>
 
                 {/* Number Circle */}
-                <div className="absolute left-0 md:left-1/2 md:-translate-x-1/2 w-16 h-16 rounded-full bg-gradient-cool border-4 border-white shadow-brand-sm flex items-center justify-center z-10 hover:scale-110 transition-transform duration-300">
+                <div className="absolute left-0 md:left-1/2 md:-translate-x-1/2 w-16 h-16 rounded-full bg-kh-cool border-4 border-white shadow-cool-sm flex items-center justify-center z-10 hover:scale-110 transition-transform duration-300">
                   <span className="text-xl font-bold text-white">{step.num}</span>
                 </div>
 

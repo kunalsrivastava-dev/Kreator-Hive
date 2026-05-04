@@ -2,10 +2,10 @@ import { CheckCircle2 } from "lucide-react";
 
 export default function WhyUs() {
   const usps = [
-    { text: "Built as a product, not a service", color: "text-brand-purple", bg: "bg-gradient-cool" },
-    { text: "Real-time data & automation", color: "text-brand-red", bg: "bg-gradient-warm" },
-    { text: "Designed for marketing teams, not engineers", color: "text-brand-green", bg: "bg-gradient-earth" },
-    { text: "India-first, globally scalable", color: "text-brand-cyan", bg: "bg-gradient-cool" }
+    { text: "Built as a product, not a service", color: "text-kh-forest", bg: "bg-kh-earth" },
+    { text: "Real-time data & automation", color: "text-kh-purple", bg: "bg-kh-cool" },
+    { text: "Designed for marketing teams, not engineers", color: "text-kh-forest", bg: "bg-kh-earth" },
+    { text: "India-first, globally scalable", color: "text-kh-purple", bg: "bg-kh-cool" }
   ];
 
   return (
