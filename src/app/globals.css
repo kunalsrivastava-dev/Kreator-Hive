@@ -1,44 +1,42 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-brand-purple: #7B2FBE;
-  --color-brand-indigo: #4F6FE8;
-  --color-brand-cyan: #00B4D8;
-  --color-brand-teal: #00C49A;
-  --color-brand-red: #D62839;
-  --color-brand-orange: #F4821F;
-  --color-brand-yellow: #F9C623;
-  --color-brand-green: #3A9C47;
+  --color-brand-purple: #8B35C4;
+  --color-brand-blue: #4F6FE8;
+  --color-brand-cyan: #29B6F6;
+  --color-brand-red: #D32F2F;
+  --color-brand-orange: #F57C00;
+  --color-brand-yellow: #F9A825;
+  --color-brand-green: #388E3C;
+  --color-brand-dark: #2D3142;
 
-  --color-neutral-dark: #1F2937;
-  --color-neutral-body: #374151;
-  --color-neutral-subtle: #6B7280;
-  --color-neutral-lightbg: #F9FAFB;
-  --color-neutral-cardborder: #E5E7EB;
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F8F9FF;
+  --color-bg-tertiary: #F0FDF4;
+  --color-bg-accent: #FFF8F0;
 
-  --color-hero-bg: #0D0D1A;
-  --color-card-bg-dark: #16213E;
+  --color-text-primary: #2D3142;
+  --color-text-secondary: #4A5568;
+  --color-text-muted: #718096;
+  --color-text-on-dark: #FFFFFF;
+
+  --color-border-light: #E8EAF6;
+  --color-border-medium: #C5CAE9;
 
   --font-sans: var(--font-inter);
   --font-display: var(--font-plus-jakarta-sans);
 
   --animate-scrolling-ticker: scrolling-ticker 30s linear infinite;
-  --animate-mesh: mesh 10s ease-in-out infinite;
 
   @keyframes scrolling-ticker {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
   }
-
-  @keyframes mesh {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #1F2937;
+  --background: #FFFFFF;
+  --foreground: #2D3142;
 }
 
 body {
@@ -49,32 +47,77 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Utilities */
-.text-gradient-primary {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#7B2FBE] via-[#4F6FE8] to-[#00B4D8];
+/* Gradients */
+.bg-gradient-cool {
+  background-image: linear-gradient(135deg, #8B35C4, #29B6F6);
+}
+
+.bg-gradient-warm {
+  background-image: linear-gradient(135deg, #D32F2F, #F57C00);
+}
+
+.bg-gradient-earth {
+  background-image: linear-gradient(135deg, #F9A825, #388E3C);
+}
+
+.bg-gradient-full {
+  background-image: linear-gradient(135deg, #8B35C4, #4F6FE8, #29B6F6, #F9A825, #388E3C);
+}
+
+.bg-gradient-hero {
+  background-image: linear-gradient(135deg, #8B35C4 0%, #4F6FE8 50%, #29B6F6 100%);
+}
+
+.bg-gradient-pastel {
+  background-image: linear-gradient(135deg, #EDE7F6 0%, #E3F2FD 50%, #E8F5E9 100%);
+}
+
+.bg-gradient-soft {
+  background-image: linear-gradient(135deg, #F8F9FF 0%, #EDE7F6 100%);
+}
+
+/* Gradient Text Utilities */
+.text-gradient-cool {
+  background-image: linear-gradient(135deg, #8B35C4, #29B6F6);
+  -webkit-background-clip: text;
+  color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-warm {
+  background-image: linear-gradient(135deg, #D32F2F, #F57C00);
+  -webkit-background-clip: text;
+  color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-earth {
+  background-image: linear-gradient(135deg, #F9A825, #388E3C);
+  -webkit-background-clip: text;
+  color: transparent;
+  background-clip: text;
 }
 
 .text-gradient-full {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#7B2FBE] via-[#00B4D8] to-[#00C49A];
+  background-image: linear-gradient(135deg, #8B35C4, #4F6FE8, #29B6F6, #F9A825, #388E3C);
+  -webkit-background-clip: text;
+  color: transparent;
+  background-clip: text;
 }
 
-.bg-gradient-primary {
-  @apply bg-gradient-to-r from-[#7B2FBE] via-[#4F6FE8] to-[#00B4D8];
+/* Shadows */
+.shadow-brand-sm {
+  box-shadow: 0 4px 16px rgba(139, 53, 196, 0.10);
 }
 
-.bg-mesh-dark {
-  background-color: #0D0D1A;
-  background-image: 
-    radial-gradient(at 0% 0%, hsla(272, 60%, 46%, 0.15) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, hsla(227, 76%, 61%, 0.15) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, hsla(192, 100%, 42%, 0.15) 0px, transparent 50%);
-  background-size: 200% 200%;
-  animation: mesh 10s ease infinite;
+.shadow-brand-md {
+  box-shadow: 0 8px 32px rgba(139, 53, 196, 0.15);
 }
 
-.bg-mesh-soft {
-  background-color: #F9FAFB;
-  background-image: 
-    radial-gradient(at 0% 0%, hsla(272, 60%, 46%, 0.05) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, hsla(192, 100%, 42%, 0.05) 0px, transparent 50%);
+.shadow-brand-lg {
+  box-shadow: 0 16px 48px rgba(139, 53, 196, 0.20);
+}
+
+.shadow-card {
+  box-shadow: 0 4px 24px rgba(45, 49, 66, 0.08);
 }

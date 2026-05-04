@@ -38,42 +38,47 @@ export default function Features() {
   ];
 
   return (
-    <section className="py-24 bg-[#0D0D1A] relative">
+    <section className="py-24 bg-bg-secondary relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-display font-bold text-white tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-display font-bold text-text-primary tracking-tight">
             Everything you need, <br className="hidden md:block" />
-            <span className="text-gradient-full">in one platform</span>
+            <span className="text-gradient-cool">in one platform</span>
           </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-[#16213E] p-8 rounded-2xl border border-white/5 relative group hover:-translate-y-2 transition-all duration-300 overflow-hidden"
-            >
-              {/* Top gradient border */}
-              <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              
-              {/* Hover glow */}
-              <div className="absolute -inset-px bg-gradient-to-r from-brand-purple/20 to-brand-cyan/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none"></div>
+          {features.map((feature, index) => {
+            const gradientClass = index < 2 ? "bg-gradient-cool" : index < 4 ? "bg-gradient-warm" : "bg-gradient-earth";
+            const textGradientClass = index < 2 ? "text-brand-purple" : index < 4 ? "text-brand-red" : "text-brand-green";
+            
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white p-8 rounded-2xl border border-border-light shadow-card relative group hover:-translate-y-2 hover:shadow-brand-md transition-all duration-300 overflow-hidden"
+              >
+                {/* Top gradient border */}
+                <div className={`absolute top-0 left-0 w-full h-[3px] ${gradientClass}`}></div>
 
-              <div className="relative z-10">
-                <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center mb-6 shadow-lg shadow-brand-purple/20">
-                  {feature.icon}
+                <div className="relative z-10">
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 relative`}>
+                    <div className={`absolute inset-0 ${gradientClass} opacity-10 rounded-xl`}></div>
+                    <div className={`${textGradientClass} relative z-10`}>
+                      {feature.icon}
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold text-text-primary mb-3 tracking-wide">{feature.title}</h3>
+                  <p className="text-text-muted leading-relaxed">
+                    {feature.description}
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3 tracking-wide">{feature.title}</h3>
-                <p className="text-gray-400 leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
